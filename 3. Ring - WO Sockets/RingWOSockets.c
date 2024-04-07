@@ -34,20 +34,22 @@ void ring()
                 printf("\nProcess is alreaady dead!!");
                 break;
             }
-            do
+
+            printf("\nEnter election generator id::");
+            scanf("%d", &gid);
+
+            // Check if the entered id is invalid (same as current coordinator or crashed process)
+            while (gid == c || gid == crash)
             {
-                printf("\nEnter election generator id::");
+                printf("\nEnter a valid election generator id::");
                 scanf("%d", &gid);
-                if (gid == c)
-                {
-                    printf("\nenter a valid generator id::");
-                }
-            } while (gid == crash);
+            }
+
             flag = 0;
             k = 1;
             if (crash == c)
             {
-                msg[k++] = gid;
+                msg[k++] = gid; // starts at 2
                 for (i = (gid + 1) % n; i != gid; i = (i + 1) % n)
                 {
                     if (list[i])

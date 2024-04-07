@@ -19,6 +19,7 @@ void bully()
     int ch, crash, activate, i, gid, flag, subcdr;
     do
     {
+
         printf("\n1.Crash\n2.Activate\n3.Display\n4.Exit\nEnter You choice::");
         scanf("%d", &ch);
         switch (ch)
@@ -33,15 +34,17 @@ void bully()
                 printf("\nProcess is alreaady dead!!");
                 break;
             }
-            do
+
+            printf("\nEnter election generator id::");
+            scanf("%d", &gid);
+
+            // Check if the entered id is invalid (same as current coordinator or crashed process)
+            while (gid == c || gid == crash)
             {
-                printf("\nEnter election generator id::");
+                printf("\nEnter a valid election generator id::");
                 scanf("%d", &gid);
-                if (gid == c)
-                {
-                    printf("\nenter a valid generator id::");
-                }
-            } while (gid == crash);
+            }
+
             flag = 0;
             if (crash == c)
             {
@@ -64,8 +67,10 @@ void bully()
                     c = gid;
                 }
             }
+
             display();
             break;
+
         case 2:
             // activate
             printf("\nEnter Process no. to Activated::");
@@ -77,11 +82,13 @@ void bully()
                 printf("\nProcess is alreaady alive!!");
                 break;
             }
+
             if (activate == n)
             {
                 c = n;
                 break;
             }
+
             for (i = activate + 1; i <= n; i++)
             {
                 printf("\nmessage is sent from %d to %d", activate, i);
@@ -110,6 +117,7 @@ void bully()
         }
     } while (ch != 4);
 }
+
 int main()
 {
     int i, j;

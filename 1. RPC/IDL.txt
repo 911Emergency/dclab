@@ -12,7 +12,7 @@ Compile this IDL file by using the following command. `rpcgen -a -C add.x`
 ===
 It will generate the following files:
 	add.h			-> header file
-	add_client.c	-> client program
+	add_client.c		-> client program
 	add_clnt.c		-> client stub
 	add_server.c	-> server program
 	add_svc.c		-> server skeleton
